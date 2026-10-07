@@ -1,0 +1,158 @@
+# =============================================================================
+# kit.yml — réglages de Job Hunter
+# =============================================================================
+# Ce fichier est LA référence : chaque clé y est décrite avec ses valeurs
+# possibles et sa valeur par défaut. Le setup copie ce fichier en kit.yml et
+# remplace les valeurs par vos choix. Vous pouvez ensuite le modifier :
+#   - à la main, dans un éditeur ;
+#   - ou en langage naturel dans Claude Code : "passe à 2 passages par jour",
+#     "désactive Glassdoor", "mets le seuil d'alerte à 80".
+# Aucun secret ici. Les clés API vont dans config/secrets.env (non versionné).
+# =============================================================================
+
+# Version du schéma de ce fichier. Ne pas modifier. Permet au kit de migrer
+# votre kit.yml si une version future ajoute ou renomme des clés.
+schema_version: 1
+
+# -----------------------------------------------------------------------------
+# Où tournent les routines de collecte
+# -----------------------------------------------------------------------------
+execution:
+  # local : sur votre machine. Les 8 sources sont disponibles (les 5 sources
+  #         navigateur demandent l'extension Claude in Chrome). Condition :
+  #         machine allumée et application Claude Code ouverte aux heures prévues.
+  # cloud : sur l'infrastructure Claude, sans navigateur. 3 sources tournent :
+  #         France Travail, HelloWork, LinkedIn (recherche publique).
+  #         Aucune condition côté machine, mais l'environnement cloud doit
+  #         autoriser l'accès réseau à ces sites (voir README).
+  # Valeurs : local | cloud
+  mode: local
+
+# -----------------------------------------------------------------------------
+# Quand tournent les routines
+# -----------------------------------------------------------------------------
+schedule:
+  # Heures des passages, format HH:MM sur 24 h, dans le fuseau ci-dessous.
+  # Entre 1 et 6 passages par jour. Deux passages espacés de moins d'une heure
+  # sont refusés (les sources auraient à peine eu le temps de publier).
+  times:
+    - "08:00"
+    - "13:00"
+    - "19:00"
+  # Fuseau horaire IANA. Exemples : Europe/Paris, Europe/Brussels,
+  # America/Montreal, Africa/Lome.
+  timezone: Europe/Paris
+
+# -----------------------------------------------------------------------------
+# Où sont stockées les offres
+# -----------------------------------------------------------------------------
+storage:
+  # csv      : fichier data/offers.csv dans ce dépôt. Aucun compte requis.
+  # airtable : base Airtable créée par le setup dans VOTRE compte.
+  # Valeurs : csv | airtable
+  backend: csv
+
+  csv:
+    # Chemin du fichier, relatif à la racine du dépôt.
+    path: data/offers.csv
+    # Proposer un commit Git automatique à la fin de chaque passage.
+    # Valeurs : true | false
+    auto_commit: false
+
+  airtable:
+    # Identifiant de la base, rempli par le setup (commence par "app").
+    # Le jeton est dans config/secrets.env sous AIRTABLE_API_KEY (dis « utilise Airtable »).
+    base_id: ""
+    # Nom de la table des offres dans la base.
+    table: Offres
+
+# -----------------------------------------------------------------------------
+# Sources interrogées
+# -----------------------------------------------------------------------------
+sources:
+  # Sources actives, dans l'ordre d'appel (les sources http passent d'abord).
+  # Retirez une ligne pour désactiver une source. Aucune source n'exige de clé.
+  # Une source navigateur est ignorée automatiquement en mode cloud.
+  # Valeurs possibles : france_travail, hellowork, linkedin, wttj, apec,
+  #                     jobteaser, indeed, glassdoor (et test pour les essais)
+  enabled:
+    - france_travail   # http : site public (API officielle en option), local et cloud
+    - hellowork        # http : site public, local et cloud
+    - linkedin         # http : recherche publique sans connexion, local et cloud
+    - wttj             # navigateur, local uniquement
+    - apec             # navigateur, local uniquement
+    - jobteaser        # navigateur, local uniquement (étudiants, jeunes diplômés)
+    - indeed           # navigateur, local uniquement
+    - glassdoor        # navigateur, local uniquement
+
+  # Plafond de requêtes par source et par passage. Une requête = une page de
+  # résultats. Ces valeurs par défaut sont calibrées pour collecter le maximum
+  # sans déclencher de blocage. Les augmenter expose à des captchas ; les
+  # baisser réduit la couverture. Chaque valeur : entier entre 1 et 50.
+  limits:
+    france_travail: 20
+    hellowork: 8
+    linkedin: 5
+    wttj: 6
+    apec: 6
+    jobteaser: 6
+    indeed: 4
+    glassdoor: 4
+    test: 3            # source factice sans réseau, pour les tests uniquement
+
+  # Délai aléatoire entre deux pages, en secondes.
+  # Minimum 2 s en navigateur, 1 s en http ; le maximum doit dépasser le minimum.
+  browser_delay_seconds:
+    min: 2
+    max: 6
+  http_delay_seconds:
+    min: 1
+    max: 3
+
+# -----------------------------------------------------------------------------
+# Scoring des offres
+# -----------------------------------------------------------------------------
+scoring:
+  # Score minimal (0 à 100) pour qu'une offre déclenche une alerte et
+  # apparaisse dans la vue "À traiter".
+  alert_threshold: 70
+
+  # Score maximal attribué à une offre qui viole un critère marqué
+  # "obligatoire" dans votre profil. Entre 0 et 50.
+  hard_filter_cap: 30
+
+  # Poids relatifs des composantes du score (la somme n'a pas besoin de faire
+  # 100, les poids sont normalisés). Chaque poids : entier entre 0 et 10.
+  weights:
+    title_match: 5        # adéquation du titre aux intitulés validés
+    skills_match: 5       # compétences du profil présentes dans l'offre
+    experience_level: 3   # niveau d'expérience demandé vs le vôtre
+    location_remote: 3    # localisation et télétravail
+    contract: 3           # type de contrat
+    salary: 2             # salaire, si connu
+    education: 2          # diplôme et cours en lien avec le poste
+
+# -----------------------------------------------------------------------------
+# Alertes
+# -----------------------------------------------------------------------------
+notifications:
+  # push   : notification sur l'application Claude du téléphone (mode cloud,
+  #          nécessite les notifications push activées dans Claude).
+  # system : notification système de votre machine (mode local).
+  # none   : aucune alerte, le résumé reste consultable dans data/summaries/.
+  # Valeurs : push | system | none
+  channel: system
+
+  # Nombre maximal d'offres nommées dans une alerte. Entre 1 et 5.
+  max_offers_in_alert: 3
+
+# -----------------------------------------------------------------------------
+# Journaux et résumés
+# -----------------------------------------------------------------------------
+logging:
+  # Après ce nombre de jours, les journaux de data/runs/ sont déplacés dans
+  # data/runs/archive/ (non versionné). Entre 7 et 365.
+  archive_after_days: 30
+  # Afficher le résumé du jour à l'ouverture de Claude Code dans ce dépôt.
+  # Valeurs : true | false
+  show_summary_on_session_start: true

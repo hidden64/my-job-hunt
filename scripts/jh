@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Lanceur du moteur Job Hunter. Choisit python3 ou python (Python 3.8 minimum, aucune dépendance).
+# Usage : scripts/jh <commande> [options]   — voir `scripts/jh help`.
+set -u
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+for py in python3 python py; do
+  if command -v "$py" >/dev/null 2>&1; then
+    if "$py" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 8) else 1)' >/dev/null 2>&1; then
+      PYTHONPATH="$here${PYTHONPATH:+:$PYTHONPATH}" PYTHONIOENCODING=utf-8 exec "$py" -m jobhunter "$@"
+    fi
+  fi
+done
+echo '{"ok": false, "error": "python_missing", "message": "Python 3.8 ou plus est introuvable. Installe-le depuis https://www.python.org/downloads/ puis relance."}'
+exit 3

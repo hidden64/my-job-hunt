@@ -1,0 +1,90 @@
+[
+ {
+  "title": "Data Analyst (H/F)",
+  "company": "Acme Analytics",
+  "location": "Lyon (69)",
+  "contract": "cdi",
+  "remote": "hybrid",
+  "salary": "38-42k€ brut annuel",
+  "url": "https://example.org/offres/1",
+  "published_at": "2026-10-06",
+  "description": "Analyse de données ventes, SQL, Python, tableaux de bord Power BI. 1 à 2 ans d'expérience."
+ },
+ {
+  "title": "data analyst",
+  "company": "ACME ANALYTICS",
+  "location": "Lyon",
+  "contract": "cdi",
+  "remote": "hybrid",
+  "salary": "",
+  "url": "https://example.org/offres/1-bis",
+  "published_at": "2026-10-06",
+  "description": "Même offre republiée avec un titre en minuscules : doit produire le même id que la précédente."
+ },
+ {
+  "title": "Data Analyst Junior",
+  "company": "Nova Retail",
+  "location": "Villeurbanne (69)",
+  "contract": "alternance",
+  "remote": "none",
+  "salary": "",
+  "url": "https://example.org/offres/2",
+  "published_at": "2026-10-05",
+  "description": "Alternance 12 mois, reporting, Excel avancé, découverte de SQL."
+ },
+ {
+  "title": "Senior Data Analyst",
+  "company": "Globex",
+  "location": "Paris (75)",
+  "contract": "cdi",
+  "remote": "full",
+  "salary": "55-65k€",
+  "url": "https://example.org/offres/3",
+  "published_at": "2026-10-04",
+  "description": "5 ans d'expérience minimum, management d'une équipe de 3 analystes. Hors zone Lyon mais télétravail total."
+ },
+ {
+  "title": "Data Scientist",
+  "company": "Initech",
+  "location": "Lyon (69)",
+  "contract": "cdi",
+  "remote": "hybrid",
+  "salary": "",
+  "url": "https://example.org/offres/4",
+  "published_at": "2026-10-07",
+  "description": "Modélisation, machine learning, Python. Titre proche mais différent de Data Analyst."
+ },
+ {
+  "title": "Analyste de données",
+  "company": "Mairie de Lyon",
+  "location": "Lyon (69)",
+  "contract": "cdd",
+  "remote": "none",
+  "salary": "selon grille",
+  "url": "https://example.org/offres/5",
+  "published_at": "2026-10-03",
+  "description": "CDD 12 mois, service public, données urbaines."
+ },
+ {
+  "title": "Data Analyst stage de fin d'études",
+  "company": "Umbrella",
+  "location": "Lyon (69)",
+  "contract": "stage",
+  "remote": "hybrid",
+  "salary": "gratification légale",
+  "url": "",
+  "published_at": "2026-10-07",
+  "description": "Offre volontairement sans url : doit être rejetée comme malformée."
+ },
+ {
+  "title": "Data Analyst",
+  "company": "Vandelay Industries",
+  "location": "Bordeaux (33)",
+  "contract": "cdi",
+  "remote": "none",
+  "salary": "",
+  "url": "https://example.org/offres/6",
+  "published_at": "2026-10-02",
+  "description": "Hors zone et sans télétravail : ne doit pas remonter pour une recherche Lyon."
+ }
+]

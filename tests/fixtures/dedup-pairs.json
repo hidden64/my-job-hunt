@@ -1,0 +1,366 @@
+[
+ {
+  "same": true,
+  "why": "casse différente",
+  "a": {
+   "company": "Acme Analytics",
+   "title": "Data Analyst",
+   "location": "Lyon (69)"
+  },
+  "b": {
+   "company": "ACME ANALYTICS",
+   "title": "data analyst",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": true,
+  "why": "mention H/F",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst (H/F)",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": true,
+  "why": "F/H sans parenthèses",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst F/H",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst H/F",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": true,
+  "why": "accents",
+  "a": {
+   "company": "Société Générale",
+   "title": "Analyste de données",
+   "location": "Paris"
+  },
+  "b": {
+   "company": "Societe Generale",
+   "title": "Analyste de donnees",
+   "location": "Paris"
+  }
+ },
+ {
+  "same": true,
+  "why": "forme juridique",
+  "a": {
+   "company": "Acme SAS",
+   "title": "Comptable",
+   "location": "Nantes"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Nantes"
+  }
+ },
+ {
+  "same": true,
+  "why": "code postal et département",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "69003 Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon (69)"
+  }
+ },
+ {
+  "same": true,
+  "why": "arrondissement",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon 3e - 69"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon (69)"
+  }
+ },
+ {
+  "same": true,
+  "why": "format France Travail",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "69 - LYON 03"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon - 69"
+  }
+ },
+ {
+  "same": true,
+  "why": "format LinkedIn",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon, Auvergne-Rhône-Alpes, France"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon (69)"
+  }
+ },
+ {
+  "same": true,
+  "why": "niveau entre parenthèses",
+  "a": {
+   "company": "Acme",
+   "title": "Développeur Python (Senior)",
+   "location": "Paris"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Développeur Python",
+   "location": "Paris"
+  }
+ },
+ {
+  "same": true,
+  "why": "ponctuation",
+  "a": {
+   "company": "Acme",
+   "title": "Data-Analyst / BI",
+   "location": "Paris"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst BI",
+   "location": "Paris"
+  }
+ },
+ {
+  "same": true,
+  "why": "espaces multiples",
+  "a": {
+   "company": "  Acme  ",
+   "title": "Data   Analyst",
+   "location": " Paris "
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Paris"
+  }
+ },
+ {
+  "same": true,
+  "why": "Saint abrégé",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "St-Étienne"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Saint-Etienne (42)"
+  }
+ },
+ {
+  "same": true,
+  "why": "Paris arrondissement long",
+  "a": {
+   "company": "Acme",
+   "title": "Juriste",
+   "location": "Paris 2e Arrondissement (75)"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Juriste",
+   "location": "Paris - 75"
+  }
+ },
+ {
+  "same": true,
+  "why": "filiale France du même nom",
+  "a": {
+   "company": "Lindab",
+   "title": "Data Analyst H/F",
+   "location": "Montluel - 01"
+  },
+  "b": {
+   "company": "Lindab France",
+   "title": "Data Analyst H/F",
+   "location": "Montluel"
+  }
+ },
+ {
+  "same": false,
+  "why": "intitulé différent",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Scientist",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": false,
+  "why": "ville différente",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Bordeaux"
+  }
+ },
+ {
+  "same": false,
+  "why": "entreprise différente",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Globex",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": false,
+  "why": "intitulé plus précis",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst Finance",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": false,
+  "why": "Villeurbanne n'est pas Lyon",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Villeurbanne (69)"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Lyon (69)"
+  }
+ },
+ {
+  "same": false,
+  "why": "langage différent C++ / C#",
+  "a": {
+   "company": "Acme",
+   "title": "Développeur C++",
+   "location": "Paris"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Développeur C#",
+   "location": "Paris"
+  }
+ },
+ {
+  "same": false,
+  "why": "groupe vs filiale",
+  "a": {
+   "company": "Groupe SEB",
+   "title": "Data Analyst",
+   "location": "Écully"
+  },
+  "b": {
+   "company": "SEB Professional",
+   "title": "Data Analyst",
+   "location": "Écully"
+  }
+ },
+ {
+  "same": false,
+  "why": "alternance dans le titre",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Alternance Data Analyst",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": false,
+  "why": "Saint-Denis vs Saint-Denis-de-l'Hôtel",
+  "a": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Saint-Denis (93)"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Comptable",
+   "location": "Saint-Denis-de-l'Hôtel (45)"
+  }
+ },
+ {
+  "same": false,
+  "why": "junior vs confirmé hors parenthèses",
+  "a": {
+   "company": "Acme",
+   "title": "Data Analyst Junior",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Acme",
+   "title": "Data Analyst Confirmé",
+   "location": "Lyon"
+  }
+ },
+ {
+  "same": false,
+  "why": "France au milieu du nom",
+  "a": {
+   "company": "France Travail",
+   "title": "Conseiller",
+   "location": "Lyon"
+  },
+  "b": {
+   "company": "Travail",
+   "title": "Conseiller",
+   "location": "Lyon"
+  }
+ }
+]

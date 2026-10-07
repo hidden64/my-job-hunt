@@ -1,0 +1,112 @@
+# Profil fictif de référence pour les tests de bout en bout (docs/TESTS.md).
+# Aucune donnée réelle. Identique à config/candidate.example.yml.
+
+schema_version: 1
+updated_at: "2026-10-08T10:00:00+02:00"
+
+# -----------------------------------------------------------------------------
+# Identité
+# -----------------------------------------------------------------------------
+identity:
+  first_name: Camille
+  last_name: Martin
+  email: ""            # facultatif, jamais transmis à une source
+
+# -----------------------------------------------------------------------------
+# Parcours : point d'entrée du questionnaire
+# -----------------------------------------------------------------------------
+education:
+  degrees:
+    - title: Master Data Science
+      school: Université Lumière Lyon 2
+      status: in_progress        # obtained | in_progress
+      year: 2027                 # année d'obtention (prévue si en cours)
+      level: bac+5               # bac | bac+2 | bac+3 | bac+5 | bac+8
+    - title: Licence Mathématiques appliquées
+      school: Université Claude Bernard Lyon 1
+      status: obtained
+      year: 2025
+      level: bac+3
+  courses:                       # cours et spécialisations marquants
+    - Statistiques bayésiennes
+    - Machine learning
+    - Bases de données SQL
+    - Visualisation de données
+  certifications:
+    - Google Data Analytics
+  experiences:                   # stages, alternances, emplois
+    - title: Stagiaire data analyst
+      company: Entreprise Fictive
+      months: 6
+      year: 2025
+  skills: [SQL, Python, Power BI, Excel, pandas]
+  languages:
+    - language: Français
+      level: natif
+    - language: Anglais
+      level: C1
+
+# -----------------------------------------------------------------------------
+# Poste recherché
+# -----------------------------------------------------------------------------
+target:
+  title: Data Analyst            # intitulé exact donné par le candidat
+  variants: [Analyste de données, Business Analyst data]
+  sector: indifférent
+  seniority: junior              # junior | confirmé | senior
+
+# -----------------------------------------------------------------------------
+# Critères : chacun est « required » (obligatoire) ou « flexible »
+# -----------------------------------------------------------------------------
+# Une offre qui viole un critère required voit son score plafonné (scoring.hard_filter_cap).
+criteria:
+  location:
+    priority: flexible
+    city: Lyon
+    department: "69"
+    radius_km: 30
+  remote:
+    priority: required
+    value: hybrid                # none | hybrid | full | any
+  contract:
+    priority: required
+    value: [cdi, alternance]     # cdi, cdd, alternance, stage, freelance, interim
+  experience_years:
+    priority: flexible
+    value: 1
+  languages:
+    priority: flexible
+    value: [Anglais C1]
+  salary_min:
+    priority: flexible
+    value: 35000                 # brut annuel en euros, 0 si indifférent
+  availability:
+    priority: required
+    value: "2027-07-01"
+
+# -----------------------------------------------------------------------------
+# Mots-clés : générés par Claude, validés par le candidat
+# -----------------------------------------------------------------------------
+# Les routines refusent de tourner tant que validated_at est vide.
+# L'ordre compte : les premiers intitulés et les premières zones sont toujours
+# cherchés, les derniers seulement si les plafonds de requêtes le permettent.
+keywords:
+  validated_at: "2026-10-08T10:12:00+02:00"
+  titles:
+    - Data Analyst
+    - Analyste de données
+    - Junior Data Analyst
+    - Business Analyst data
+    - Chargé d'études statistiques
+  skills: [SQL, Python, Power BI, tableaux de bord, statistiques]
+  negative: [senior, lead, manager, directeur, stage]
+  locations:
+    - label: Lyon
+      city: Lyon
+      department: "69"
+    - label: Villeurbanne
+      city: Villeurbanne
+      department: "69"
+  rationale:                     # une ligne par mot-clé non évident (affichée à la validation)
+    - "Chargé d'études statistiques : intitulé fréquent dans le public pour un profil Master data"
+    - "stage exclu : le candidat cherche un CDI ou une alternance"

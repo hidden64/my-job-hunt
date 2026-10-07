@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scripts/jh *)",
+      "Bash(./scripts/jh *)",
+      "Bash(bash scripts/jh *)",
+      "Bash(python3 -m unittest *)",
+      "Bash(python3 tests/live_smoke.py)",
+      "Edit(/data/**)",
+      "mcp__claude-in-chrome"
+    ],
+    "deny": [
+      "Read(/config/secrets.env)",
+      "Edit(/config/secrets.env)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

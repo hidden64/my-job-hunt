@@ -1,0 +1,40 @@
+# --- Secrets : jamais versionnés ---
+config/secrets.env
+config/secrets.local.env
+.env
+.env.*
+*.pem
+*.key
+
+# --- Données personnelles du candidat ---
+# Le CV n'est pas versionné par défaut. Pour le versionner, retirer la ligne ci-dessous.
+config/cv/*
+!config/cv/README.md
+
+# --- Fichiers produits, régénérables ---
+data/exports/*
+!data/exports/README.md
+data/pending/*
+!data/pending/README.md
+data/runs/archive/
+data/runs/evidence/
+
+# --- Ce qui EST versionné (rappel, pas une règle) ---
+# config/kit.yml, config/candidate.yml, data/offers.csv, data/runs/, data/summaries/
+
+# --- Système et éditeurs ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# --- Claude Code : état local, pas de configuration partagée ---
+.claude/settings.local.json
+
+# --- Moteur Python ---
+__pycache__/
+*.pyc
+data/runs/work/
+data/.offers-*.csv
